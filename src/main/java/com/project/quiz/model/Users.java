@@ -1,68 +1,77 @@
 package com.project.quiz.model;
 
+import java.util.Date;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 
 @Entity
 @Table(name="users")
 public class Users {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY )
-	private long id;
-	
-	@Column(name="name")
-	private String name;
-	
-	@Column(name="email")
-	private String email;
-	
-	@Column(name="password")
-	private String password;
-	
 
-	public long getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    @Column(name = "name", nullable = false)
+    private String name;
 
-	public String getName() {
-		return name;
-	}
-	
-	public String getEmail() {
-		return email;
-	}
+    @Column(name = "email", nullable = false, unique = true)
+    @Email(message = "Email should be valid")
+    private String email;
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    @Column(name = "password", nullable = false)
+    private String password;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @Column(name = "date", nullable = false)
+    private Date date = new Date();
 
+    public long getId() {
+        return id;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getName() {
+        return name;
+    }
 
-	@Override
-	public String toString() {
-		return "Users [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	
-	
-	
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Users [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
+    }
 }

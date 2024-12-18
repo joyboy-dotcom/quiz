@@ -1,11 +1,11 @@
-document.getElementById('registerForm').addEventListener('summit', async function(event) {
+document.getElementById('registerForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    const name = document.getElementById('name'); 
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
+    const username = document.getElementById('loginUsername').value; 
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('loginPassword').value;
 
-    const user = { username, email, password };
+    const user = { name: username, email: email, password: password };
 
     try {
         const response = await fetch("http://localhost:8082/user/register", {
@@ -13,17 +13,17 @@ document.getElementById('registerForm').addEventListener('summit', async functio
             headers: {
                 "Content-Type": "application/json", 
             },
-            body: JSON.stringify(user) 
+            body: JSON.stringify(user)
         });
 
+        const result = await response.json();
+
         if (response.ok) {
-            const result = await response.json();
             console.log("Registration successful:", result);
-            window.location.href = './users/index.html';
+            window.location.href = './index.html';
         } else {
-            const errorMessage = await response.text();
-            console.error("Error response from server:", errorMessage);
-            alert("Registration failed: " + errorMessage);
+            console.error("Error response from server:", result);
+            alert("Registration failed: " + result.message);
         }
     } catch (error) {
         console.error("Error registering user:", error);

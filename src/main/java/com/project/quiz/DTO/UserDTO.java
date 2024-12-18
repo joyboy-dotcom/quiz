@@ -1,10 +1,13 @@
 package com.project.quiz.DTO;
 
+import java.util.Date;
+
 public class UserDTO {
 	private long id;
 	private String name;
 	private String email;
 	private String password;
+	private Date date;
 	
 	
 	public UserDTO() {
@@ -46,6 +49,15 @@ public class UserDTO {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	@Override
