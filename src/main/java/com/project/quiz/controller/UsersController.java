@@ -1,7 +1,6 @@
 package com.project.quiz.controller;
 
 import org.springframework.web.bind.annotation.RestController;
-
 import com.project.quiz.model.Users;
 import com.project.quiz.response.ResponseMessage;
 import com.project.quiz.service.UsersService;

@@ -1,6 +1,7 @@
 package com.project.quiz.model;
 
 import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,10 +27,10 @@ public class Users {
 
     @Column(name = "password", nullable = false)
     private String password;
-
-    @Column(name = "date", nullable = false)
+   
+    @Column(name = "date", nullable = true)
     private Date date = new Date();
-
+    
     public long getId() {
         return id;
     }
@@ -60,18 +61,5 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    @Override
-    public String toString() {
-        return "Users [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
     }
 }

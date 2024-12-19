@@ -1,11 +1,11 @@
 document.getElementById('loginForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    const username = document.getElementById('loginUsername').value;
+    const name = document.getElementById('loginUsername').value;
     const password = document.getElementById('loginPassword').value;
 
     try {
-        const response = await fetch(`http://localhost:8082/user/login/nameandpassword?username=${username}&password=${password}`);
+        const response = await fetch(`http://localhost:8082/user/login/nameandpassword?username=${name}&password=${password}`);
         const result = await response.json();
 
         if (result.length > 0) {

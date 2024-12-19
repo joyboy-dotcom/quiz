@@ -1,8 +1,6 @@
 package com.project.quiz.repository;
 
 import java.util.List;
-
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +11,7 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
 
     List<Users> findByNameAndPassword(String fname, String lname);
 
-    Users findByEmail(String name);
+    Users findByemail(String name);
 
     Object findByName(String username);
 
